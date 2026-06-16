@@ -7,8 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ced6e0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #ced6e0;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.aurasams.controller.MainPanelController">
    <children>
       <BorderPane layoutX="167.33333333333334" prefHeight="399.0" prefWidth="431.0" style="-fx-background-color: #f1f2f6;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="167.0" AnchorPane.rightAnchor="2.0" AnchorPane.topAnchor="0.0">
          <center>
@@ -17,13 +16,13 @@
       </BorderPane>
       <VBox layoutX="3.0" layoutY="80.0" prefHeight="515.0" prefWidth="159.0" spacing="10.0" style="-fx-background-color: #57606f;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Course Management" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Subjects Management" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Student Management" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Lecturer Management" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Class schedule Management" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Attendence Management" />
-            <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Reports" />
+            <Button fx:id="courseM" mnemonicParsing="false" onAction="#btnCourseManageOnAction" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Course Management" />
+            <Button fx:id="subjectM" mnemonicParsing="false" onAction="#btnSubjectManageOnAction" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Subjects Management" />
+            <Button fx:id="studentM" mnemonicParsing="false" onAction="#btnStudentManageOnAction" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Student Management" />
+            <Button fx:id="lecturerM" mnemonicParsing="false" onAction="#btnLecturerManageOnAction" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Lecturer Management" />
+            <Button fx:id="classschedM" mnemonicParsing="false" onAction="#btnClassSchedManageOnAction" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Class schedule Management" />
+            <Button fx:id="attendanceM" mnemonicParsing="false" onAction="#btnAttendanceManageOnAction" prefHeight="45.0" prefWidth="161.0" style="-fx-background-color: #0fb9b1;" text="Attendence Management" />
+            <Button fx:id="reportM" mnemonicParsing="false" onAction="#btnReportManageOnAction" prefHeight="45.0" prefWidth="161.0" text="Reports" />
             <Button mnemonicParsing="false" prefHeight="45.0" prefWidth="161.0" text="Button" />
          </children>
       </VBox>

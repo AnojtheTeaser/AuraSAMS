@@ -1,0 +1,4 @@
+--patch-module
+lk.ijse.aurasams=_
+--add-reads
+lk.ijse.aurasams=ALL-UNNAMED
