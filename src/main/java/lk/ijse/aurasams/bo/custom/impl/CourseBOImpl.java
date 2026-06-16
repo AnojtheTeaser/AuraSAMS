@@ -4,6 +4,7 @@
  */
 package lk.ijse.aurasams.bo.custom.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 import lk.ijse.aurasams.bo.custom.CourseBO;
 import lk.ijse.aurasams.dao.DAOFactory;
@@ -31,14 +32,19 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public boolean updateCourse(CourseDTO dto) throws Exception {
-
-        return false;
         
+        CourseEntity entity = new CourseEntity(dto.getId(), dto.getName());
+        boolean result = courseDao.update(entity);
+        
+        return result;
+                
     }
 
     @Override
     public boolean deleteCourse(String id) throws Exception {
-    return false;
+    
+      boolean result = courseDao.delete(id);
+      return result;
 
     }
 
@@ -50,8 +56,22 @@ public class CourseBOImpl implements CourseBO {
 
     @Override
     public List<CourseDTO> getAllCourse() throws Exception {
-
-      return null;
+        
+       List<CourseEntity> allentity = courseDao.getAll();
+       
+       List<CourseDTO> alldto = new ArrayList<>();
+       
+       for (CourseEntity course :allentity ){
+       
+           String id = course.getId();
+           String name = course.getName();
+           
+           CourseDTO dto = new CourseDTO(id, name);
+           alldto.add(dto);
+       
+       }
+        return alldto;
+     
 
     }
     

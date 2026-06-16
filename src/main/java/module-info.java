@@ -4,10 +4,13 @@ module lk.ijse.aurasams {
     requires java.base;
     requires java.sql;
     
-
+    
     opens lk.ijse.aurasams to javafx.fxml;
     exports lk.ijse.aurasams;
     
     exports lk.ijse.aurasams.controller;
     opens lk.ijse.aurasams.controller to javafx.fxml;
+    
+    exports lk.ijse.aurasams.dto;
+    opens lk.ijse.aurasams.dto to javafx.base;
 }
