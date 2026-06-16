@@ -2,6 +2,8 @@ module lk.ijse.aurasams {
     requires javafx.controls;
     requires javafx.fxml;
     requires java.base;
+    requires java.sql;
+    
 
     opens lk.ijse.aurasams to javafx.fxml;
     exports lk.ijse.aurasams;

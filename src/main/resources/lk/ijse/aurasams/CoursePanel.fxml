@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.aurasams.controller.CoursePanelController">
    <children>
       <VBox layoutX="-4.0" prefHeight="500.0" prefWidth="809.0" spacing="15.0" style="-fx-background-color: #fab1a0;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-4.666666666666629" AnchorPane.topAnchor="0.0">
          <padding>
@@ -61,18 +61,18 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="769.0" style="-fx-background-color: #dfe4ea;">
                <children>
-                  <Button fx:id="courseSaveBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="SAVE" />
-                  <Button fx:id="courseUpdateBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="UPDATE">
+                  <Button fx:id="courseSaveBtn" mnemonicParsing="false" onAction="#btnSaveOnAction" prefHeight="31.0" prefWidth="132.0" text="SAVE" />
+                  <Button fx:id="courseUpdateBtn" mnemonicParsing="false" onAction="#btnUpdateOnAction" prefHeight="31.0" prefWidth="132.0" text="UPDATE">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="courseDeleteBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="DELETE">
+                  <Button fx:id="courseDeleteBtn" mnemonicParsing="false" onAction="#btnDeleteOnAction" prefHeight="31.0" prefWidth="132.0" text="DELETE">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="courseResetBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="RESET">
+                  <Button fx:id="courseResetBtn" mnemonicParsing="false" onAction="#btnResetOnAction" prefHeight="31.0" prefWidth="132.0" text="RESET">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
