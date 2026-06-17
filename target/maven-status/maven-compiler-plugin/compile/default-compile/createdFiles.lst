@@ -12,9 +12,13 @@ module-info.class
 lk\ijse\aurasams\controller\SubjectPanelController.class
 lk\ijse\aurasams\bo\SuperBO.class
 lk\ijse\aurasams\controller\CoursePanelController.class
+lk\ijse\aurasams\bo\custom\impl\StudentBOImpl.class
 lk\ijse\aurasams\dao\custom\impl\SubjectDAOImpl.class
+lk\ijse\aurasams\dao\custom\impl\StudentDAOImpl.class
 lk\ijse\aurasams\bo\custom\impl\CourseBOImpl.class
+lk\ijse\aurasams\entity\StudentEntity.class
 lk\ijse\aurasams\bo\BOFactory$BOTypes.class
+lk\ijse\aurasams\dao\custom\StudentDAO.class
 lk\ijse\aurasams\dto\CourseDTO.class
 lk\ijse\aurasams\dao\custom\CourseDAO.class
 lk\ijse\aurasams\dao\SuperDAO.class
@@ -22,4 +26,7 @@ lk\ijse\aurasams\dao\custom\SubjectDAO.class
 lk\ijse\aurasams\dao\CrudDAO.class
 lk\ijse\aurasams\bo\custom\impl\SubjectBOImpl.class
 lk\ijse\aurasams\dao\DAOFactory.class
+lk\ijse\aurasams\dto\StudentDTO.class
+lk\ijse\aurasams\controller\StudentPanelController.class
 lk\ijse\aurasams\dao\custom\impl\CourseDAOImpl.class
+lk\ijse\aurasams\bo\custom\StudentBO.class
