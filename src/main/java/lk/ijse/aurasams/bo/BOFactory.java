@@ -5,6 +5,7 @@
 package lk.ijse.aurasams.bo;
 
 import lk.ijse.aurasams.bo.custom.impl.CourseBOImpl;
+import lk.ijse.aurasams.bo.custom.impl.SubjectBOImpl;
 
 /**
  *
@@ -37,6 +38,7 @@ public class BOFactory {
         case BOTypes.COURSE:
             return new CourseBOImpl();
         case BOTypes.SUBJECTS:
+            return new SubjectBOImpl();
         case BOTypes.STUDENTS:
         case BOTypes.LECTURER:
         case BOTypes.CLASSSCHED:
