@@ -5,6 +5,8 @@
 package lk.ijse.aurasams.dao;
 
 import lk.ijse.aurasams.dao.custom.impl.CourseDAOImpl;
+import lk.ijse.aurasams.dao.custom.impl.LecturerDAOImpl;
+import lk.ijse.aurasams.dao.custom.impl.LecturerSubjectDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.StudentDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.SubjectDAOImpl;
 
@@ -20,7 +22,7 @@ public static DAOFactory daoFactory;
     }
         
     public static enum DAOTypes{
-        COURSE,SUBJECTS,STUDENTS,LECTURER,CLASSSCHED,ATTENDANCE,REPORTS
+       LECTURER_SUBJECTS,COURSE,SUBJECTS,STUDENTS,LECTURER,CLASSSCHED,ATTENDANCE,REPORTS
     
     }
     
@@ -39,11 +41,15 @@ public SuperDAO getDAO(DAOTypes type){
             return new SubjectDAOImpl();
         case DAOTypes.STUDENTS:
              return new StudentDAOImpl();
+         case DAOTypes.LECTURER_SUBJECTS:
+            return new LecturerSubjectDAOImpl();
         case DAOTypes.LECTURER:
+            return new LecturerDAOImpl();
         case DAOTypes.CLASSSCHED:
         case DAOTypes.ATTENDANCE:
         case DAOTypes.REPORTS:
-            
+              
+        
         default:
             return null;
             

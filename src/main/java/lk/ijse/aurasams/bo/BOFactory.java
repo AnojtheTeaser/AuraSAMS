@@ -5,6 +5,7 @@
 package lk.ijse.aurasams.bo;
 
 import lk.ijse.aurasams.bo.custom.impl.CourseBOImpl;
+import lk.ijse.aurasams.bo.custom.impl.LecturerBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.StudentBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.SubjectBOImpl;
 
@@ -21,7 +22,7 @@ public class BOFactory {
     
    public static enum BOTypes{
        
-       COURSE,SUBJECTS,STUDENTS,LECTURER,CLASSSCHED,ATTENDANCE,REPORTS
+       LECTURER_SUBJECTS,COURSE,SUBJECTS,STUDENTS,LECTURER,CLASSSCHED,ATTENDANCE,REPORTS
 
 }
     
@@ -43,6 +44,7 @@ public class BOFactory {
         case BOTypes.STUDENTS:
             return new StudentBOImpl();
         case BOTypes.LECTURER:
+             return new LecturerBOImpl();
         case BOTypes.CLASSSCHED:
         case BOTypes.ATTENDANCE:
         case BOTypes.REPORTS:

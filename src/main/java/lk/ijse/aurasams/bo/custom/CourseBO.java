@@ -14,7 +14,7 @@ import lk.ijse.aurasams.dto.CourseDTO;
  */
 public interface CourseBO extends SuperBO{
         
-      boolean saveCourse(CourseDTO dto) throws Exception;
+            boolean saveCourse(CourseDTO dto) throws Exception;
             boolean updateCourse(CourseDTO dto) throws Exception;
             boolean deleteCourse(String id ) throws Exception;
             
