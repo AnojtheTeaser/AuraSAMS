@@ -13,6 +13,7 @@ import lk.ijse.aurasams.dao.custom.LecturerDAO;
 import lk.ijse.aurasams.dao.custom.LecturerSubjectDAO;
 import lk.ijse.aurasams.db.DBConnection;
 import lk.ijse.aurasams.dto.LecturerDTO;
+import lk.ijse.aurasams.dto.SubjectDTO;
 import lk.ijse.aurasams.entity.LecturerEntity;
 
 /**
@@ -32,6 +33,7 @@ LecturerSubjectDAO lecturerSubjectDao = (LecturerSubjectDAO) DAOFactory.getInsta
     
     @Override
     public boolean saveLecturer(LecturerDTO dto) throws Exception {
+        
         
         LecturerEntity entity = new LecturerEntity(dto.getId(), dto.getName(), dto.getEmail(), dto.getTel());
         
@@ -141,7 +143,10 @@ LecturerSubjectDAO lecturerSubjectDao = (LecturerSubjectDAO) DAOFactory.getInsta
         
     }
 
-    
-    
+   
+    @Override
+    public List<SubjectDTO> getSubjectByLecturerID(String lecId) throws Exception {
+        return lecturerDao.getSubjectByLecturerID(lecId);
+    }
 
 }

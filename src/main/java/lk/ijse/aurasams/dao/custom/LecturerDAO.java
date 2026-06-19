@@ -5,7 +5,9 @@
 package lk.ijse.aurasams.dao.custom;
 
 import java.sql.Connection;
+import java.util.List;
 import lk.ijse.aurasams.dao.CrudDAO;
+import lk.ijse.aurasams.dto.SubjectDTO;
 import lk.ijse.aurasams.entity.LecturerEntity;
 
 /**
@@ -14,6 +16,8 @@ import lk.ijse.aurasams.entity.LecturerEntity;
  */
 public interface LecturerDAO extends CrudDAO<LecturerEntity> {
     
+    
     public boolean updateLecturerSubMapping(String lecId, String subId, Connection conn) throws Exception;
     
+    List<SubjectDTO> getSubjectByLecturerID(String lecId) throws Exception;
 }

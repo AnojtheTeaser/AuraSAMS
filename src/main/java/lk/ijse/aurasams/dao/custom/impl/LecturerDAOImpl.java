@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import lk.ijse.aurasams.dao.custom.LecturerDAO;
 import lk.ijse.aurasams.db.DBConnection;
+import lk.ijse.aurasams.dto.SubjectDTO;
 import lk.ijse.aurasams.entity.LecturerEntity;
 
 /**
@@ -62,14 +63,15 @@ public class LecturerDAOImpl implements LecturerDAO{
 
 @Override    
     public boolean updateLecturerSubMapping(String lecId, String subId, Connection conn) throws Exception{
-             String sql = "UPDATE lecturer_subjects SET sub_id =? WHERE lec_id=?";
-             
-             PreparedStatement pstm = conn.prepareStatement(sql);
-             pstm.setString(1,lecId);
-             pstm.setString(2,subId );
-             
-             boolean result = pstm.executeUpdate() >0;
-             return result;
+//             String sql = "UPDATE lecturer_subjects SET sub_id =? WHERE lec_id=?";
+//             
+//             PreparedStatement pstm = conn.prepareStatement(sql);
+//             pstm.setString(1,lecId);
+//             pstm.setString(2,subId );
+//             
+//             boolean result = pstm.executeUpdate() >0;
+//             return result;
+                return true;
              
     }
     
@@ -121,7 +123,29 @@ public class LecturerDAOImpl implements LecturerDAO{
         
     }
     
-    
+   public List<SubjectDTO> getSubjectByLecturerID (String lecID) throws Exception {
+           Connection conn = DBConnection.getInstance().getconnection();
+
+               String sql = "SELECT s.sub_id, s.sub_name FROM subjects s " +
+             "INNER JOIN lecturer_subjects ls ON s.sub_id = ls.sub_id " +
+             "WHERE ls.lec_id = ?";
+        
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, lecID);
+        ResultSet result = pstm.executeQuery();
+        
+        List <SubjectDTO> subList = new ArrayList<>();
+        
+        while (result.next()){
+            
+           
+           String id = result.getString("sub_id");
+           String name = result.getString("sub_name");
+             SubjectDTO subdto = new SubjectDTO(id, name);
+             subList.add(subdto);
+        }
+        return subList;
+   }
     
     
 }

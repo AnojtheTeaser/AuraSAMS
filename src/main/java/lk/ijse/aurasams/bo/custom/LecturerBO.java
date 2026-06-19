@@ -7,6 +7,7 @@ package lk.ijse.aurasams.bo.custom;
 import java.util.List;
 import lk.ijse.aurasams.bo.SuperBO;
 import lk.ijse.aurasams.dto.LecturerDTO;
+import lk.ijse.aurasams.dto.SubjectDTO;
 
 /**
  *
@@ -22,7 +23,7 @@ public interface LecturerBO extends SuperBO{
             
             boolean saveLecturerSubMapping(String lecId,String subId) throws Exception;
             
-            
+              List<SubjectDTO> getSubjectByLecturerID(String lecId) throws Exception;
          
     
     

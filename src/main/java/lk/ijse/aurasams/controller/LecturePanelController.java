@@ -14,6 +14,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -71,9 +72,9 @@ public class LecturePanelController implements Initializable  {
     @FXML
     private TableColumn<LecturerDTO, String> lecsubCol;
     @FXML
-    private TableView<?> lectureSubtable;
+    private TableView<SubjectDTO> lectureSubtable;
     @FXML
-    private TableColumn<?, ?> lectureSubCol;
+    private TableColumn<SubjectDTO, String> lectureSubCol;
     @FXML
     private Button lecAddBtn;
     @FXML
@@ -95,6 +96,8 @@ public class LecturePanelController implements Initializable  {
         
         lecturerTable.setItems(tempLecturerList);
         
+        lectureSubCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+        
         
         loadSubjectCombobox();
         tableMouseClick();
@@ -105,58 +108,71 @@ public class LecturePanelController implements Initializable  {
     
     @FXML
     private void lectureSaveBtn(ActionEvent event) {
-        try{
-            if (tempLecturerList.isEmpty()){
-                   new Alert(Alert.AlertType.ERROR,"Empty values input").show();
-                   return;
-            }
-            
-            for(LecturerDTO dto : tempLecturerList){
-                    
-                if(lecturerBo.saveLecturer(dto)){
-                
-                    lecturerBo.saveLecturerSubMapping(dto.getId(), dto.getTempSubject());
-                    
-                } else{
-                   
-                     new Alert(Alert.AlertType.ERROR,"some thing went wrong").show();
-                }
-        
-            
-            }
-                 new Alert(Alert.AlertType.CONFIRMATION,"save successfully").show();
-                tempLecturerList.clear();
-                
        
-                } catch(Exception e){
-                    e.printStackTrace();
-                    new Alert(Alert.AlertType.ERROR,"some thing went wrong").show();
-                    
+    try {
+        if (tempLecturerList.isEmpty()) {
+            new Alert(Alert.AlertType.ERROR, "Empty values input").show();
+            return;
+        }
+        
+        List<LecturerDTO> allLecturers = lecturerBo.getAllLecturer();
+        
+        for (LecturerDTO dto : tempLecturerList) {
+            boolean isAlreadyInDB = false;
+            for (LecturerDTO dbDto : allLecturers) {
+                if (dbDto.getId().equals(dto.getId())) {
+                    isAlreadyInDB = true;
+                    break;
                 }
-                
+            }
+            
+            if (isAlreadyInDB) {
+                lecturerBo.saveLecturerSubMapping(dto.getId(), dto.getTempSubject());
+            } else {
+                if (lecturerBo.saveLecturer(dto)) {
+                    lecturerBo.saveLecturerSubMapping(dto.getId(), dto.getTempSubject());
+                    allLecturers.add(dto);
+                } else {
+                    new Alert(Alert.AlertType.ERROR, "some thing went wrong").show();
+                    return;
                 }
-
+            }
+        }
+        
+        new Alert(Alert.AlertType.CONFIRMATION, "save successfully").show();
+        tempLecturerList.clear();
+        lecturerTable.getItems().clear();
+        
+    } catch (Exception e) {
+        e.printStackTrace();
+        new Alert(Alert.AlertType.ERROR, "some thing went wrong").show();
+    }
+}
 
     @FXML
     private void lectureUpdateBtn(ActionEvent event) {
+        // use Ai guide line
        try {
             String id = lecIDTextField.getText();
             String name = lecNameTextField.getText();
             String email = lecEmailTextField.getText();
             String tel = lecTelTextField.getText();
-            String subid = subCombobox.getValue();
+          //  String subid = subCombobox.getValue();
             
-            if (id.isEmpty()||name.isEmpty()||subid == null){
+            if (id.isEmpty()||name.isEmpty()){
                  new Alert(Alert.AlertType.ERROR,"emty inputs").show();
                  return;
             }
             
-            LecturerDTO dto = new LecturerDTO(id, name, email, tel, subid);
+            LecturerDTO dto = new LecturerDTO(id, name, email, tel);
             boolean result = lecturerBo.updateLecturer(dto);
             
             if(result){
                  new Alert(Alert.AlertType.CONFIRMATION,"updatesuccessfully").show();
-                 lectureResetBtn(event);
+                 //lectureResetBtn(event);
+                 lectureLoadTableBtn(event);
+
+                 
             }else{
                     new Alert(Alert.AlertType.ERROR,"some thing went wrong").show();
             }
@@ -172,7 +188,43 @@ public class LecturePanelController implements Initializable  {
 
     @FXML
     private void lectureDeleteBtn(ActionEvent event) {
+        
+       // use AI guide line
+    try {
+        String id = lecIDTextField.getText();
+
+        if (id.isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Please select a lecturer to delete!").show();
+            return;
+        }
+
+        Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this lecturer?", ButtonType.YES, ButtonType.NO);
+        confirmationAlert.showAndWait();
+
+        if (confirmationAlert.getResult() == ButtonType.YES) {
+            boolean isDeleted = lecturerBo.deleteLecturer(id);
+
+            if (isDeleted) {
+                new Alert(Alert.AlertType.CONFIRMATION, "Deleted successfully").show();
+                
+                lecIDTextField.clear();
+                lecNameTextField.clear();
+                lecEmailTextField.clear();
+                lecTelTextField.clear();
+                subCombobox.getSelectionModel().clearSelection();
+
+                lectureLoadTableBtn(event);
+            } else {
+                new Alert(Alert.AlertType.ERROR, "some thing went wrong").show();
+            }
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        new Alert(Alert.AlertType.ERROR, "some thing went wrong").show();
     }
+}
+    
 
     @FXML
     private void lectureResetBtn(ActionEvent event) {
@@ -223,6 +275,7 @@ public class LecturePanelController implements Initializable  {
         
         }catch(Exception e){
         e.printStackTrace();
+        lecturerTable.refresh();
         }
         
         
@@ -234,7 +287,7 @@ public class LecturePanelController implements Initializable  {
     @FXML
     private void lecturResetTableBtn(ActionEvent event) {
       
-        
+        maintablereset();
         
     }
 
@@ -285,7 +338,7 @@ public class LecturePanelController implements Initializable  {
     }
           
     private void tableMouseClick(){
-        
+        try{
         // this method use Lamda Expression -> 
         
         lecturerTable.setOnMouseClicked(event ->{
@@ -299,14 +352,40 @@ public class LecturePanelController implements Initializable  {
                 lecTelTextField.setText(selectTableline.getTel());
                 subCombobox.setValue(selectTableline.getTempSubject());
               
-            }
+                
+                String lecid = lecIDTextField.getText();
+                lectureSubtable.getItems().clear();
+                
+try {
+    List<SubjectDTO> subjects = lecturerBo.getSubjectByLecturerID(lecid);
+    var obList = FXCollections.observableArrayList(subjects);
+    lectureSubtable.setItems(obList); 
+} catch (Exception e) {
+    e.printStackTrace();
+}
+                
+                
+                
+                
+                
+                
+                
+                        }
         
         });
         
+        }catch(Exception e){
+            e.printStackTrace();
         
-    
+        
+        }      
     }
-    
+     public void maintablereset(){
+         
+        lecturerTable.getItems().clear();
+
+         lecturerTable.setItems(tempLecturerList);
+     }
 
     }
     
