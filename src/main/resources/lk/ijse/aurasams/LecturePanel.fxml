@@ -67,7 +67,7 @@
             <Button fx:id="lecSaveBtn" mnemonicParsing="false" onAction="#lectureSaveBtn" prefHeight="33.0" prefWidth="153.0" text="SAVE" />
             <Button fx:id="lecUpdateBtn" mnemonicParsing="false" onAction="#lectureUpdateBtn" prefHeight="33.0" prefWidth="153.0" text="UPDATE" />
             <Button fx:id="lecDeleteBtn" mnemonicParsing="false" onAction="#lectureDeleteBtn" prefHeight="33.0" prefWidth="153.0" text="DELETE" />
-            <Button fx:id="lecResetBtn" mnemonicParsing="false" onAction="#lectureResetBtn" prefHeight="33.0" prefWidth="153.0" text="RESET" />
+            <Button fx:id="lecResetTablebtn" mnemonicParsing="false" onAction="#lecturResetTableBtn" prefHeight="33.0" prefWidth="153.0" text="RESET Table" />
          </children>
          <padding>
             <Insets top="5.0" />
@@ -95,14 +95,14 @@
             </TableView>
          </children>
       </VBox>
-      <HBox layoutX="6.0" layoutY="96.0" prefHeight="46.0" prefWidth="615.0" spacing="20.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="6.0" layoutY="96.0" prefHeight="46.0" prefWidth="753.0" spacing="20.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Button fx:id="lecAddBtn" mnemonicParsing="false" onAction="#lectureAddtoTableBtn" prefHeight="33.0" prefWidth="153.0" text="Add to Table">
                <HBox.margin>
                   <Insets />
                </HBox.margin>
             </Button>
-            <Button fx:id="lecResetTablebtn" mnemonicParsing="false" onAction="#lecturResetTableBtn" prefHeight="33.0" prefWidth="153.0" text="RESET Table" />
+            <Button fx:id="lecResetBtn" mnemonicParsing="false" onAction="#lectureResetBtn" prefHeight="33.0" prefWidth="153.0" text="RESET" />
             <Button fx:id="loadTableBtn" mnemonicParsing="false" onAction="#lectureLoadTableBtn" prefHeight="33.0" prefWidth="153.0" text="LOAD TABLE">
                <HBox.margin>
                   <Insets left="30.0" />

@@ -39,7 +39,7 @@ public class StudentPanelController implements Initializable  {
      @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-         loadCustomerCombo();
+         loadCourseCombo();
          tableMouseClick();
          loadStudentTable();
     }
@@ -177,7 +177,7 @@ public class StudentPanelController implements Initializable  {
  
     
     
-    private void loadCustomerCombo(){
+    private void loadCourseCombo(){
             try{
             List<CourseDTO> allcourse = courseBo.getAllCourse();
             courseidComboBox.getItems().clear();

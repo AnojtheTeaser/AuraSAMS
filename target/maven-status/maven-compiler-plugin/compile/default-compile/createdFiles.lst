@@ -1,4 +1,5 @@
 lk\ijse\aurasams\controller\MainPanelController.class
+lk\ijse\aurasams\entity\Course_SubjectEntity.class
 lk\ijse\aurasams\bo\custom\CourseBO.class
 lk\ijse\aurasams\bo\BOFactory.class
 lk\ijse\aurasams\dao\DAOFactory$DAOTypes.class
@@ -11,6 +12,7 @@ lk\ijse\aurasams\dao\custom\LecturerDAO.class
 lk\ijse\aurasams\entity\StudentEntity.class
 lk\ijse\aurasams\bo\BOFactory$BOTypes.class
 lk\ijse\aurasams\dao\custom\CourseDAO.class
+lk\ijse\aurasams\bo\custom\impl\Course_SubjectBOImpl.class
 lk\ijse\aurasams\dao\custom\SubjectDAO.class
 lk\ijse\aurasams\bo\custom\impl\SubjectBOImpl.class
 lk\ijse\aurasams\dao\DAOFactory.class
@@ -19,18 +21,23 @@ lk\ijse\aurasams\controller\StudentPanelController.class
 lk\ijse\aurasams\dao\custom\impl\CourseDAOImpl.class
 lk\ijse\aurasams\bo\custom\StudentBO.class
 lk\ijse\aurasams\dao\custom\LecturerSubjectDAO.class
+lk\ijse\aurasams\bo\custom\Course_SubjectBO.class
 lk\ijse\aurasams\entity\SubjectEntity.class
 lk\ijse\aurasams\bo\custom\SubjectBO.class
 lk\ijse\aurasams\entity\CourseEntity.class
 lk\ijse\aurasams\App.class
 lk\ijse\aurasams\controller\LecturePanelController.class
+lk\ijse\aurasams\dao\custom\impl\Course_SubjectDAOImpl.class
 lk\ijse\aurasams\db\DBConnection.class
 lk\ijse\aurasams\bo\custom\impl\LecturerBOImpl.class
 module-info.class
+lk\ijse\aurasams\dto\Course_SubjectDTO.class
 lk\ijse\aurasams\bo\SuperBO.class
 lk\ijse\aurasams\bo\custom\impl\StudentBOImpl.class
+lk\ijse\aurasams\dao\custom\Course_SubjectDAO.class
 lk\ijse\aurasams\dao\custom\impl\SubjectDAOImpl.class
 lk\ijse\aurasams\bo\custom\impl\CourseBOImpl.class
+lk\ijse\aurasams\controller\Course_SubjectPanelController.class
 lk\ijse\aurasams\dao\custom\StudentDAO.class
 lk\ijse\aurasams\dto\CourseDTO.class
 lk\ijse\aurasams\dto\LecturerDTO.class

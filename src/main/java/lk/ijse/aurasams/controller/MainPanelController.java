@@ -110,6 +110,15 @@ public class MainPanelController implements Initializable{
     
     }
 
+    @FXML
+    private void btnCourseSubjectOnAction(ActionEvent event) {
+        
+         System.out.println("CourseSubjectManage");
+        setPanel("/lk/ijse/aurasams/Course_SubjectPanel.fxml");
+        
+        
+    }
+
     
     
     
