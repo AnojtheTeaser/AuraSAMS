@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.aurasams.controller.ClassSchedulePanelController">
    <children>
       <VBox layoutX="-4.0" prefHeight="500.0" prefWidth="900.0" spacing="15.0" style="-fx-background-color: #a29bfe;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-4.0" AnchorPane.rightAnchor="-96.0" AnchorPane.topAnchor="0.0">
          <padding>
@@ -33,7 +33,7 @@
                         <Insets top="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField fx:id="schedIDTextField" prefHeight="25.0" prefWidth="97.0">
+                  <TextField fx:id="schedIDTextField" prefHeight="25.0" prefWidth="97.0" promptText="DONT INPUT">
                      <HBox.margin>
                         <Insets top="10.0" />
                      </HBox.margin>
@@ -110,18 +110,18 @@
             </HBox>
             <HBox prefHeight="33.0" prefWidth="769.0" style="-fx-background-color: #dfe4ea;">
                <children>
-                  <Button fx:id="schedSaveBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="SAVE" />
-                  <Button fx:id="schedUpdateBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="UPDATE">
+                  <Button fx:id="schedSaveBtn" mnemonicParsing="false" onAction="#saveOnAction" prefHeight="31.0" prefWidth="132.0" text="SAVE" />
+                  <Button fx:id="schedUpdateBtn" mnemonicParsing="false" onAction="#updateOnAction" prefHeight="31.0" prefWidth="132.0" text="UPDATE">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="schedDeleteBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="DELETE">
+                  <Button fx:id="schedDeleteBtn" mnemonicParsing="false" onAction="#deleteOnAction" prefHeight="31.0" prefWidth="132.0" text="DELETE">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <Button fx:id="schedResetBtn" mnemonicParsing="false" prefHeight="31.0" prefWidth="132.0" text="RESET">
+                  <Button fx:id="schedResetBtn" mnemonicParsing="false" onAction="#resetOnAction" prefHeight="31.0" prefWidth="132.0" text="RESET">
                      <HBox.margin>
                         <Insets left="20.0" />
                      </HBox.margin>

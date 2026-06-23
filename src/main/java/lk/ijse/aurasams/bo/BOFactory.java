@@ -4,6 +4,8 @@
  */
 package lk.ijse.aurasams.bo;
 
+import lk.ijse.aurasams.bo.custom.impl.AttendanceBOImpl;
+import lk.ijse.aurasams.bo.custom.impl.ClassScheduleBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.CourseBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.Course_SubjectBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.LecturerBOImpl;
@@ -49,7 +51,9 @@ public class BOFactory {
         case BOTypes.COURSE_SUBJECT:
             return new Course_SubjectBOImpl();
         case BOTypes.CLASSSCHED:
+            return new ClassScheduleBOImpl();
         case BOTypes.ATTENDANCE:
+            return new AttendanceBOImpl();
         case BOTypes.REPORTS:
             
         default:

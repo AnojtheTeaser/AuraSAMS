@@ -33,9 +33,8 @@ public class StudentBOImpl implements StudentBO {
     @Override
     public boolean updateStudent(StudentDTO dto) throws Exception {
         
-        StudentEntity stuenti = new  StudentEntity(dto.getId(), dto.getName(), dto.getEmail(),dto.getTel(), dto.getCourseid());
-        boolean result = studentDao.update(stuenti);
-        return result;
+      
+        return false;
     }
 
     @Override
@@ -78,6 +77,26 @@ public class StudentBOImpl implements StudentBO {
         
         
         
+    }
+
+    @Override
+    public List<StudentDTO> getStudentByCourseID(String courseId) throws Exception {
+        
+        List<StudentEntity> entityList = studentDao.getStudentByCourseID(courseId);
+        
+        List <StudentDTO> dtoList = new ArrayList<>();
+        
+        for (StudentEntity entity : entityList){
+            
+                String id = entity.getId();
+                String name = entity.getName();
+                
+                
+                StudentDTO dto = new StudentDTO(id, name, null, null, null);
+                dtoList.add(dto);
+        }
+        
+        return dtoList ;
     }
     
 }

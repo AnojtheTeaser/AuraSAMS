@@ -74,6 +74,7 @@ public class SubjectPanelController implements Initializable  {
              if(result){
                          new Alert(Alert.AlertType.CONFIRMATION,"Saved successfully").show();
                          loadTableAllSubjects();
+                         btnResetSubject(event);
              }else{
                   new Alert(Alert.AlertType.ERROR,"Somthing went wrong").show();
              }
@@ -102,6 +103,7 @@ public class SubjectPanelController implements Initializable  {
              if(result){
                          new Alert(Alert.AlertType.CONFIRMATION,"Update successfully").show();
                          loadTableAllSubjects();
+                          btnResetSubject(event);
              }else{
                   new Alert(Alert.AlertType.ERROR,"Somthing went wrong").show();
              }
@@ -124,6 +126,7 @@ public class SubjectPanelController implements Initializable  {
               if(result){
                          new Alert(Alert.AlertType.CONFIRMATION,"Delete successfully").show();
                          loadTableAllSubjects();
+                          btnResetSubject(event);
              }else{
                   new Alert(Alert.AlertType.ERROR,"Somthing went wrong").show();
              }

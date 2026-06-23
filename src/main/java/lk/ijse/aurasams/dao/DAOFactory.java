@@ -4,6 +4,8 @@
  */
 package lk.ijse.aurasams.dao;
 
+import lk.ijse.aurasams.dao.custom.impl.AttendanceDAOImpl;
+import lk.ijse.aurasams.dao.custom.impl.ClassScheduleDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.CourseDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.Course_SubjectDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.LecturerDAOImpl;
@@ -49,7 +51,9 @@ public SuperDAO getDAO(DAOTypes type){
         case DAOTypes.COURSE_SUBJECT:
             return new Course_SubjectDAOImpl();
         case DAOTypes.CLASSSCHED:
+            return new ClassScheduleDAOImpl();
         case DAOTypes.ATTENDANCE:
+            return new AttendanceDAOImpl();
         case DAOTypes.REPORTS:
               
         

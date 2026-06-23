@@ -4,16 +4,13 @@
  */
 package lk.ijse.aurasams.dao.custom;
 
-import java.util.List;
 import lk.ijse.aurasams.dao.CrudDAO;
-import lk.ijse.aurasams.dao.SuperDAO;
-import lk.ijse.aurasams.entity.StudentEntity;
+import lk.ijse.aurasams.entity.ClassScheduleEntity;
 
 /**
  *
  * @author TechWave
  */
-public interface StudentDAO extends CrudDAO<StudentEntity> {
-    List<StudentEntity> getStudentByCourseID(String courseId) throws Exception;
+public interface ClassScheduleDAO extends CrudDAO<ClassScheduleEntity>{
     
 }

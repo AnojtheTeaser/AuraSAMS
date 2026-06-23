@@ -7,6 +7,7 @@ package lk.ijse.aurasams.bo.custom;
 import java.util.List;
 import lk.ijse.aurasams.bo.SuperBO;
 import lk.ijse.aurasams.dto.StudentDTO;
+import lk.ijse.aurasams.entity.StudentEntity;
 
 /**
  *
@@ -20,5 +21,7 @@ public interface StudentBO extends SuperBO {
             
             StudentDTO searchStudent(String id) throws Exception;
             public List<StudentDTO> getAllStudent() throws Exception;
+            
+             List<StudentDTO> getStudentByCourseID(String courseId) throws Exception;
     
 }

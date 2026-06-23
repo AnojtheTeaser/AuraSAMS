@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="795.0" style="-fx-background-color: #81ecec;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="795.0" style="-fx-background-color: #81ecec;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.aurasams.controller.AttendancePanelController">
    <children>
       <Label layoutX="33.0" layoutY="14.0" text="Attendance Management">
          <font>
@@ -36,15 +36,16 @@
                   <Font size="14.0" />
                </font>
                <padding>
-                  <Insets left="50.0" />
+                  <Insets left="30.0" />
                </padding>
             </Label>
             <TextField fx:id="schedIDTextField" prefHeight="25.0" prefWidth="130.0" />
-            <Button fx:id="okBtn" mnemonicParsing="false" text="OK">
+            <Button fx:id="okBtn" mnemonicParsing="false" onAction="#OkOnAction" text="OK">
                <HBox.margin>
-                  <Insets left="40.0" />
+                  <Insets />
                </HBox.margin>
             </Button>
+            <Button mnemonicParsing="false" onAction="#resetIDOnAction" text="Reset " />
          </children>
          <padding>
             <Insets top="10.0" />
@@ -52,10 +53,10 @@
       </HBox>
       <HBox layoutX="8.0" layoutY="154.0" prefHeight="46.0" prefWidth="483.0" spacing="20.0" style="-fx-background-color: #dfe6e9;">
          <children>
-            <Button fx:id="attSaveBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="105.0" text="SAVE" />
-            <Button fx:id="attUpdateBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="105.0" text="UPDATE" />
-            <Button fx:id="attDeleteBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="105.0" text="DELETE" />
-            <Button fx:id="attResetBtn" mnemonicParsing="false" prefHeight="33.0" prefWidth="105.0" text="RESET" />
+            <Button fx:id="attSaveBtn" mnemonicParsing="false" onAction="#saveBtnOnAction" prefHeight="33.0" prefWidth="105.0" text="SAVE" />
+            <Button fx:id="attUpdateBtn" mnemonicParsing="false" onAction="#updateBtnOnAction" prefHeight="33.0" prefWidth="105.0" text="UPDATE" />
+            <Button fx:id="attDeleteBtn" mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="33.0" prefWidth="105.0" text="DELETE" />
+            <Button fx:id="attResetBtn" mnemonicParsing="false" onAction="#resetBtnOnAction" prefHeight="33.0" prefWidth="105.0" text="RESET" />
          </children>
          <padding>
             <Insets top="5.0" />
@@ -67,14 +68,14 @@
               <columns>
                 <TableColumn fx:id="schedidCol" prefWidth="139.33330821990967" text="Sched ID" />
                 <TableColumn fx:id="stuidCol" prefWidth="138.6666717529297" text="Stu ID" />
-                  <TableColumn fx:id="statusCol" minWidth="5.333343505859375" prefWidth="203.3333028157552" text="Status" />
+                  <TableColumn fx:id="statusCol" minWidth="5.333343505859375" prefWidth="202.0" text="Status" />
               </columns>
             </TableView>
          </children>
       </HBox>
-      <VBox layoutX="501.0" layoutY="52.0" prefHeight="445.0" prefWidth="288.0" style="-fx-background-color: #dfe6e9;">
+      <VBox layoutX="501.0" layoutY="52.0" prefHeight="440.0" prefWidth="255.0" style="-fx-background-color: #dfe6e9;">
          <children>
-            <TableView fx:id="stuTable" prefHeight="446.0" prefWidth="288.0">
+            <TableView fx:id="stuTable" prefHeight="429.0" prefWidth="255.0">
               <columns>
                 <TableColumn fx:id="stuIDColStuTable" prefWidth="109.3333740234375" text="Stu ID" />
                 <TableColumn fx:id="stuNameColStuTable" prefWidth="176.66668701171875" text="Stu Name" />
@@ -87,7 +88,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <HBox layoutX="8.0" layoutY="92.0" prefHeight="57.0" prefWidth="483.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="8.0" layoutY="88.0" prefHeight="57.0" prefWidth="483.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Label text="Stu ID">
                <font>
@@ -97,16 +98,16 @@
                   <Insets left="5.0" right="10.0" />
                </HBox.margin>
             </Label>
-            <TextField fx:id="attenStuIDTextField" />
-            <RadioButton fx:id="presentRadio" mnemonicParsing="false" text="PRESENT">
+            <TextField fx:id="attenStuIDTextField" prefHeight="25.0" prefWidth="111.0" />
+            <RadioButton fx:id="presentRadio" mnemonicParsing="false" onAction="#statusRadioBtnOnAction" text="PRESENT">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
                <toggleGroup>
-                  <ToggleGroup fx:id="attend" />
+                  <ToggleGroup fx:id="statusToggleGroup" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton fx:id="absentRadio" mnemonicParsing="false" text="ABSENT" toggleGroup="$attend">
+            <RadioButton fx:id="absentRadio" mnemonicParsing="false" onAction="#statusRadioBtnOnAction" text="ABSENT" toggleGroup="$statusToggleGroup">
                <HBox.margin>
                   <Insets left="5.0" right="5.0" />
                </HBox.margin>
@@ -114,7 +115,12 @@
                   <Insets right="10.0" />
                </padding>
             </RadioButton>
-            <RadioButton fx:id="lateRadio" mnemonicParsing="false" text="LATE" toggleGroup="$attend" />
+            <RadioButton fx:id="lateRadio" mnemonicParsing="false" onAction="#statusRadioBtnOnAction" text="LATE" toggleGroup="$statusToggleGroup" />
+            <Button mnemonicParsing="false" onAction="#loadTableOnAction" prefHeight="29.0" prefWidth="88.0" text="Load TAble">
+               <HBox.margin>
+                  <Insets bottom="5.0" left="5.0" />
+               </HBox.margin>
+            </Button>
          </children>
          <padding>
             <Insets top="10.0" />

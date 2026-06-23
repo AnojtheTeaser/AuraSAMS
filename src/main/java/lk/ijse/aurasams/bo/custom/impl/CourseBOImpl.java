@@ -24,7 +24,7 @@ public class CourseBOImpl implements CourseBO {
     public boolean saveCourse(CourseDTO dto) throws Exception {
         
        CourseEntity entity = new CourseEntity(dto.getId(),dto.getName());
-       boolean result = courseDao.save(entity);
+     boolean result = courseDao.save(entity);
        
        return result;
         

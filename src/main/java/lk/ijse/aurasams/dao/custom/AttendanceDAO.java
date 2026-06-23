@@ -4,16 +4,18 @@
  */
 package lk.ijse.aurasams.dao.custom;
 
-import java.util.List;
 import lk.ijse.aurasams.dao.CrudDAO;
-import lk.ijse.aurasams.dao.SuperDAO;
-import lk.ijse.aurasams.entity.StudentEntity;
+import lk.ijse.aurasams.entity.AttendanceEntity;
 
 /**
  *
  * @author TechWave
  */
-public interface StudentDAO extends CrudDAO<StudentEntity> {
-    List<StudentEntity> getStudentByCourseID(String courseId) throws Exception;
+public interface AttendanceDAO extends CrudDAO <AttendanceEntity>{
+    
+    boolean checkAttendanceExists(String schedId, String stuId) throws Exception;
+    
+    public boolean Delete(String schedId, String stuId) throws Exception;
+    
     
 }

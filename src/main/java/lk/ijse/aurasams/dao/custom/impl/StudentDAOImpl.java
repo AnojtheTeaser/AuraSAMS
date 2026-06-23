@@ -115,5 +115,31 @@ public class StudentDAOImpl implements StudentDAO {
         
         
     }
+
+    @Override
+    public List<StudentEntity> getStudentByCourseID(String courseId) throws Exception {
+        
+        Connection conn = DBConnection.getInstance().getconnection();
+        
+        String sql = "SELECT stu_id, name FROM students WHERE course_id=?";
+        PreparedStatement pstm = conn.prepareStatement(sql);
+        pstm.setString(1, courseId);
+        
+        ResultSet res = pstm.executeQuery();
+        
+        List<StudentEntity> studentList = new ArrayList<>();
+        
+        while (res.next()){
+            String id = res.getString("stu_id");
+            String name = res.getString("name");
+            
+            StudentEntity entity = new StudentEntity(id, name, null, null, null);
+            studentList.add(entity);
+        
+        }
+        
+        return studentList;
+        
+    }
     
 }

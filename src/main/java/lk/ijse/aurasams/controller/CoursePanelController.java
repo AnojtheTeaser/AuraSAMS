@@ -73,8 +73,9 @@ public class CoursePanelController implements Initializable {
             boolean result = courseBo.saveCourse(dto);
             
             if(result){
-            new Alert(Alert.AlertType.CONFIRMATION,"Saved successfully").show();
+            new Alert(Alert.AlertType.INFORMATION,"Saved successfully").show();
             loadAllCourse();
+                btnResetOnAction(event);
             } else{
             
              new Alert(Alert.AlertType.ERROR,"Somthing went wrong").show();
@@ -104,6 +105,8 @@ public class CoursePanelController implements Initializable {
         
             
               new Alert(Alert.AlertType.CONFIRMATION,"Update successfully").show();
+              loadAllCourse();
+              btnResetOnAction(event);
              
             } else{
             
@@ -128,6 +131,7 @@ public class CoursePanelController implements Initializable {
         if(result){
         new Alert(Alert.AlertType.CONFIRMATION,"Delete successfully").show();
         loadAllCourse();
+        btnResetOnAction(event);
         }else{
          new Alert(Alert.AlertType.ERROR,"Somthing went wrong").show();
         }

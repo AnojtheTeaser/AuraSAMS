@@ -97,6 +97,7 @@ public class StudentPanelController implements Initializable  {
              if (result){
                     new Alert(Alert.AlertType.CONFIRMATION,"Saved successfully").show();
                     loadStudentTable();
+                    btnReset(event);
 
              }
         
@@ -128,6 +129,7 @@ public class StudentPanelController implements Initializable  {
              if (result){
                     new Alert(Alert.AlertType.CONFIRMATION,"update successfully").show();
                      loadStudentTable();
+                     btnReset(event);
              }
         
         }catch(Exception e){
@@ -149,6 +151,7 @@ public class StudentPanelController implements Initializable  {
               if(result){
                          new Alert(Alert.AlertType.CONFIRMATION,"Delete successfully").show();
                           loadStudentTable();
+                          btnReset(event);
                         
              }else{
                   new Alert(Alert.AlertType.ERROR,"Somthing went wrong").show();
