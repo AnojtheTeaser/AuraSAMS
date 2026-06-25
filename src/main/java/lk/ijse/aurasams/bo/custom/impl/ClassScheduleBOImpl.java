@@ -76,5 +76,23 @@ public class ClassScheduleBOImpl implements ClassScheduleBO{
         
         return dtoList;
     }
+
+    @Override
+    public List<String> getSubjectsByCourse(String courseId) throws Exception {
+        
+        List<String> list = classschedDao.getSubjectsByCourse(courseId);
+        return list;
+        
+        
+    }
+
+    @Override
+    public List<String> getLecturersBySubject(String subId) throws Exception {
+        
+       List<String> lecList = classschedDao.getLecturersBySubject(subId);
+       return lecList;
+        
+        
+    }
     
 }

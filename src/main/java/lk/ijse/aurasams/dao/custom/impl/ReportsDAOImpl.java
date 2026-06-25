@@ -106,7 +106,40 @@ public class ReportsDAOImpl implements ReportsDAO{
 
     @Override
     public List<ReportEntity> getAttendanceByDateRange(String courseId, String stuId, String fromDate, String toDate) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+       Connection conn = DBConnection.getInstance().getconnection();
+
+
+    String sql = "SELECT s.stu_id, s.name, c.course_name, sub.sub_name, cs.date, a.status " +
+                 "FROM attendance a " +
+                 "JOIN students s ON a.stu_id = s.stu_id " +
+                 "JOIN class_schedule cs ON a.sched_id = cs.sched_id " +
+                 "JOIN course c ON cs.course_id = c.course_id " +
+                 "JOIN subjects sub ON cs.sub_id = sub.sub_id " +
+                 "WHERE cs.date BETWEEN ? AND ? AND s.stu_id = ?";
+
+    PreparedStatement pstm = conn.prepareStatement(sql);
+    pstm.setString(1, fromDate);
+    pstm.setString(2, toDate);
+    pstm.setString(3, stuId);
+
+    ResultSet result = pstm.executeQuery();
+    List<ReportEntity> list = new ArrayList<>();
+
+    while (result.next()) {
+        String id = result.getString("stu_id");
+        String name = result.getString("name");
+        String courseName = result.getString("course_name");
+        String subName = result.getString("sub_name");
+        String date = result.getString("date");
+        String status = result.getString("status");
+
+        ReportEntity entity = new ReportEntity(id, name, courseName, subName, date, status);
+        list.add(entity);
+    }
+    return list;
+        
+        
     }
 
     @Override

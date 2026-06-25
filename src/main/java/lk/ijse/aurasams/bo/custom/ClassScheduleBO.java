@@ -21,6 +21,11 @@ public interface ClassScheduleBO extends SuperBO{
             
             ClassScheduleDTO searchSched(String id) throws Exception;
             public List<ClassScheduleDTO> getAllSched() throws Exception;
+            
+              public List<String> getSubjectsByCourse(String courseId) throws Exception;
+              
+              public List<String> getLecturersBySubject(String subId) throws Exception;
     
+              
     
 }

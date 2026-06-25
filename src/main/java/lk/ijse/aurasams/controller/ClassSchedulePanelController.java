@@ -16,21 +16,26 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import lk.ijse.aurasams.bo.BOFactory;
 import lk.ijse.aurasams.bo.custom.ClassScheduleBO;
+import lk.ijse.aurasams.bo.custom.CourseBO;
 import lk.ijse.aurasams.dto.ClassScheduleDTO;
+import lk.ijse.aurasams.dto.CourseDTO;
 
 /**
  *
  * @author TechWave
  */
 public class ClassSchedulePanelController implements Initializable{
-private final ClassScheduleBO classschedBo = (ClassScheduleBO)BOFactory.getInstance().getBO(BOFactory.BOTypes.CLASSSCHED);
     
+private final ClassScheduleBO classschedBo = (ClassScheduleBO)BOFactory.getInstance().getBO(BOFactory.BOTypes.CLASSSCHED);
+private final CourseBO courseBO = (CourseBO) BOFactory.getInstance().getBO(BOFactory.BOTypes.COURSE);
+   
     @FXML
     private TextField schedIDTextField;
     @FXML
@@ -65,6 +70,12 @@ private final ClassScheduleBO classschedBo = (ClassScheduleBO)BOFactory.getInsta
     private TableColumn<ClassScheduleDTO, Date> dateCol;
     @FXML
     private TableColumn<ClassScheduleDTO, Time> timeCol;
+    @FXML
+    private ComboBox<String> courseIDComboBox;
+    @FXML
+    private ComboBox<String> subIDComboBox;
+    @FXML
+    private ComboBox<String> lecIDComboBox;
     
     
     
@@ -74,6 +85,7 @@ private final ClassScheduleBO classschedBo = (ClassScheduleBO)BOFactory.getInsta
         
         Loadtable();
         tableMouseClick();
+        loadcourseComboBox();
         
         
         
@@ -87,9 +99,9 @@ private final ClassScheduleBO classschedBo = (ClassScheduleBO)BOFactory.getInsta
     private void saveOnAction(ActionEvent event) {
         try{
             String schedid = schedIDTextField.getText();
-            String courseId = courseIDTextFields.getText(); 
-            String subId = subIDTextFields.getText(); 
-            String lecId = lecIDTextFields.getText(); 
+            String courseId = courseIDComboBox.getSelectionModel().getSelectedItem();
+            String subId = subIDComboBox.getSelectionModel().getSelectedItem();
+            String lecId = lecIDComboBox.getSelectionModel().getSelectedItem(); 
             String date = dateTextField.getText(); 
             String time = timeTextField.getText();
             
@@ -118,12 +130,12 @@ private final ClassScheduleBO classschedBo = (ClassScheduleBO)BOFactory.getInsta
     private void updateOnAction(ActionEvent event) {
         
         try { 
-String schedId = schedIDTextField.getText(); 
- String courseId = courseIDTextFields.getText();
-  String subId = subIDTextFields.getText(); 
-  String lecId = lecIDTextFields.getText(); 
-  String date = dateTextField.getText(); 
-  String time = timeTextField.getText(); 
+            String schedId = schedIDTextField.getText();
+            String courseId = courseIDComboBox.getSelectionModel().getSelectedItem();
+            String subId = subIDComboBox.getSelectionModel().getSelectedItem();
+            String lecId = lecIDComboBox.getSelectionModel().getSelectedItem();  
+            String date = dateTextField.getText(); 
+            String time = timeTextField.getText(); 
 
   if (schedId.isEmpty()) { 
   new Alert(Alert.AlertType.WARNING, "empty value input").show();
@@ -184,9 +196,9 @@ String schedId = schedIDTextField.getText();
         
         
             schedIDTextField.clear();
-            courseIDTextFields.clear();
-            subIDTextFields.clear();
-            lecIDTextFields.clear(); 
+            courseIDComboBox.getSelectionModel().clearSelection();
+            subIDComboBox.getSelectionModel().clearSelection();
+            lecIDComboBox.getSelectionModel().clearSelection();
             dateTextField.clear();
             timeTextField.clear();
         
@@ -225,12 +237,12 @@ String schedId = schedIDTextField.getText();
             if(selectTableline != null){
                 
               
-            schedIDTextField.setText(selectTableline.getSched_id());
-            courseIDTextFields.setText(selectTableline.getCourse_id());
-            subIDTextFields.setText(selectTableline.getSub_id());
-            lecIDTextFields.setText(selectTableline.getLec_id());
-            dateTextField.setText(selectTableline.getDate());
-            timeTextField.setText(selectTableline.getTime());
+             schedIDTextField.setText(selectTableline.getSched_id());
+             courseIDComboBox.setValue(selectTableline.getCourse_id());
+             subIDComboBox.setValue(selectTableline.getSub_id());
+             lecIDComboBox.setValue(selectTableline.getLec_id());
+             dateTextField.setText(selectTableline.getDate());
+             timeTextField.setText(selectTableline.getTime());
                 
                 
             }
@@ -240,7 +252,76 @@ String schedId = schedIDTextField.getText();
         
     
     }
+
+    @FXML
+    private void courseIDComboBoxOnAction(ActionEvent event) {
+          try{
+              String selectCourseId = courseIDComboBox.getSelectionModel().getSelectedItem();
+              if(selectCourseId != null){
+                  subIDComboBox.getItems().clear();
+                  
+                  List <String> subIdList = classschedBo.getSubjectsByCourse(selectCourseId);
+                  
+                  ObservableList <String> obList = FXCollections.observableArrayList(subIdList);
+                  subIDComboBox.setItems(obList);
+          
+              }
+          
+              
+          }catch(Exception e){
+          e.printStackTrace();
+          }
+        
+    }
+
+    @FXML
+    private void subIDComboBoxOnAction(ActionEvent event) {
+        
+        try{
+                String selectSubId = subIDComboBox.getSelectionModel().getSelectedItem();
+                if(selectSubId != null){
+                 lecIDComboBox.getSelectionModel().clearSelection();
+                 
+                 List<String> lecIdList = classschedBo.getLecturersBySubject(selectSubId);
+                 
+                 ObservableList<String> obList= FXCollections.observableArrayList(lecIdList);
+                 lecIDComboBox.setItems(obList);
+                 
+                }
+             
+        }catch(Exception e){
+        e.printStackTrace();
+        }
+    }
+
+    @FXML
+    private void lecIDComboBoxOnAction(ActionEvent event) {
+    }
    
   
+    private void loadcourseComboBox(){
+    
+        
+        
+         try{
+         List <CourseDTO> allcourse = courseBO.getAllCourse();
+         ObservableList<String> courseIDList = FXCollections.observableArrayList();
+         
+         for (CourseDTO dto : allcourse){
+         
+             courseIDList.add(dto.getId());
+         
+         }
+         
+         courseIDComboBox.setItems(courseIDList);
+     
+        } catch(Exception e){
+        e.printStackTrace();
+        }
+    
+    
+    }
+    
+    
   }
 

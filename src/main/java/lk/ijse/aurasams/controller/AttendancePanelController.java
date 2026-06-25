@@ -231,12 +231,7 @@ public class AttendancePanelController implements Initializable{
     private void resetBtnOnAction(ActionEvent event) {
         attendanceTableList.clear();
         attendanceTable.refresh(); 
-        schedIDTextField.clear(); 
-        attenStuIDTextField.clear(); 
-        courseIDtextField.clear();
-        studentTableList.clear();
-            if (statusToggleGroup.getSelectedToggle() != null) { 
-                statusToggleGroup.getSelectedToggle().setSelected(false); }
+        
    
          }
     
@@ -413,6 +408,16 @@ public class AttendancePanelController implements Initializable{
         }
         
         
+    }
+
+    @FXML
+    private void clrearTextfieldOnAction(ActionEvent event) {
+        schedIDTextField.clear(); 
+        attenStuIDTextField.clear(); 
+        courseIDtextField.clear();
+        studentTableList.clear();
+            if (statusToggleGroup.getSelectedToggle() != null) { 
+                statusToggleGroup.getSelectedToggle().setSelected(false); }
     }
   
   }

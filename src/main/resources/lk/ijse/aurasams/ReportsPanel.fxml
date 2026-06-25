@@ -19,7 +19,7 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <HBox layoutX="24.0" layoutY="63.0" prefHeight="28.0" prefWidth="533.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="24.0" layoutY="63.0" prefHeight="28.0" prefWidth="604.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Label text="Course ID">
                <padding>
@@ -45,6 +45,11 @@
                </HBox.margin>
             </ComboBox>
             <Button fx:id="stuViseReportGenarateBtn" mnemonicParsing="false" onAction="#stuViseReportGenarateBtnONAction" text="Genarate" />
+            <Button fx:id="stuViseResetBtn" mnemonicParsing="false" onAction="#stuViseResetBtnOnAction" text="Reset">
+               <HBox.margin>
+                  <Insets left="10.0" />
+               </HBox.margin>
+            </Button>
          </children>
          <padding>
             <Insets top="2.0" />
@@ -60,7 +65,7 @@
             <Font name="System Bold" size="16.0" />
          </font>
       </Label>
-      <HBox layoutX="24.0" layoutY="117.0" prefHeight="28.0" prefWidth="533.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="24.0" layoutY="117.0" prefHeight="28.0" prefWidth="604.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Label text="Course ID">
                <padding>
@@ -80,6 +85,11 @@
             <Button fx:id="subViseReportGenarateBtn" mnemonicParsing="false" onAction="#subViseReportGenarateBtnOnAction" text="Genarate">
                <HBox.margin>
                   <Insets left="40.0" />
+               </HBox.margin>
+            </Button>
+            <Button fx:id="subViseResetBtn" mnemonicParsing="false" onAction="#subViseResetBtnOnAction" text="Reset">
+               <HBox.margin>
+                  <Insets left="10.0" />
                </HBox.margin>
             </Button>
          </children>
@@ -102,7 +112,7 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </Label>
-            <ComboBox fx:id="dateViaCourseID" prefWidth="150.0" />
+            <ComboBox fx:id="dateViaCourseID" onAction="#dateViaCourseIDOnAction" prefWidth="150.0" />
             <Label text="stu ID">
                <padding>
                   <Insets right="10.0" />
@@ -114,7 +124,7 @@
             <Insets top="2.0" />
          </padding>
       </HBox>
-      <HBox layoutX="26.0" layoutY="201.0" prefHeight="35.0" prefWidth="569.0" spacing="10.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="26.0" layoutY="201.0" prefHeight="36.0" prefWidth="641.0" spacing="10.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Label text="From Date">
                <HBox.margin>
@@ -124,7 +134,8 @@
             <DatePicker fx:id="fromDate" />
             <Label text="To Date" />
             <DatePicker fx:id="toDate" prefHeight="25.0" prefWidth="173.0" />
-            <Button fx:id="dateViseReportGenarateBtn" mnemonicParsing="false" onAction="#dateViseReportGenarateBtnOnAction" text="Genarate" />
+            <Button fx:id="dateViseReportGenarateBtn" mnemonicParsing="false" onAction="#dateViseReportGenarateBtnOnAction" prefHeight="25.0" prefWidth="74.0" text="Genarate" />
+            <Button fx:id="dateViseResetBtn" mnemonicParsing="false" onAction="#dateViseResetBtnOnAction" prefHeight="25.0" prefWidth="50.0" text="Reset" />
          </children>
          <padding>
             <Insets bottom="5.0" top="5.0" />

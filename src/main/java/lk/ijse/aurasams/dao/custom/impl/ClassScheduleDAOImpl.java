@@ -105,5 +105,37 @@ public class ClassScheduleDAOImpl implements ClassScheduleDAO{
         return scheduleList;
         
     }
-    
+
+    @Override
+    public List<String> getSubjectsByCourse(String courseId) throws Exception {
+        
+        String sql = "SELECT sub_id FROM course_subjects WHERE course_id = ?"; 
+        Connection conn = DBConnection.getInstance().getconnection(); 
+        PreparedStatement pstm = conn.prepareStatement(sql); 
+        pstm.setString(1, courseId); 
+        ResultSet result = pstm.executeQuery(); 
+        List<String> subIds = new ArrayList<>(); while (result.next()) { subIds.add(result.getString("sub_id"));
+ } 
+        return subIds;
+  
+    }
+
+    @Override
+    public List<String> getLecturersBySubject(String subId) throws Exception {
+        
+        String sql = "SELECT lec_id FROM lecturer_subjects WHERE sub_id = ?";
+           Connection conn = DBConnection.getInstance().getconnection();
+             PreparedStatement pstm = conn.prepareStatement(sql);
+             pstm.setString(1, subId);
+             ResultSet result = pstm.executeQuery();
+
+             List<String> lecIdList = new ArrayList<>();
+             while (result.next()) {
+             lecIdList.add(result.getString("lec_id"));
+            }
+         return lecIdList;
+        
+    }
+
+
 }

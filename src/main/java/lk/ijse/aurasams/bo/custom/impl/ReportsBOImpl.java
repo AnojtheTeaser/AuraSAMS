@@ -75,7 +75,28 @@ public class ReportsBOImpl implements ReportsBO{
 
     @Override
     public List<ReportDTO> getAttendanceByDateRange(String courseId, String stuId, String fromDate, String toDate) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        
+    List<ReportEntity> entityList = reportsdao.getAttendanceByDateRange(courseId, stuId, fromDate, toDate);
+    
+    List<ReportDTO> reportDtoList = new ArrayList<>();
+    
+
+    for (ReportEntity entity : entityList) {
+        
+            String id =entity.getStuID();
+            String stuname =entity.getStuName();
+            String coursename =entity.getCourseName();
+            String subname =entity.getSubjectName();
+            String date =entity.getDate();
+            String status =entity.getStatus();
+            
+            ReportDTO dto = new ReportDTO(id, stuname, coursename, subname, date, status);
+            reportDtoList.add(dto);
+    }
+    return reportDtoList;
+        
+        
+        
     }
     
 }

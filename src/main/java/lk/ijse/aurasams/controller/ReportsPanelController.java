@@ -85,6 +85,12 @@ private final SubjectBO subjectBO = (SubjectBO) BOFactory.getInstance().getBO(BO
     private Button tableResetBtn;
     @FXML
     private Button print;
+    @FXML
+    private Button stuViseResetBtn;
+    @FXML
+    private Button subViseResetBtn;
+    @FXML
+    private Button dateViseResetBtn;
 
     
      @Override
@@ -201,10 +207,55 @@ private final SubjectBO subjectBO = (SubjectBO) BOFactory.getInstance().getBO(BO
 
     @FXML
     private void dateViseReportGenarateBtnOnAction(ActionEvent event) {
+        
+
+    
+    if (fromDate.getValue() == null || toDate.getValue() == null) {
+        new Alert(Alert.AlertType.WARNING, "Empty value input").show();
+        return;
     }
+
+  
+    String FromDate = fromDate.getValue().toString();
+    String ToDate = toDate.getValue().toString();
+    String SelectStuId =  dateViaStudentID.getValue().toString();
+
+    try {
+      
+        reportTableList.clear();
+
+        
+
+        List<ReportDTO> dtoList = reportsBO.getAttendanceByDateRange(null, SelectStuId, FromDate, ToDate);
+
+        if (dtoList.isEmpty()) {
+            new Alert(Alert.AlertType.INFORMATION, "No  records found ").show();
+            ReportTable.setItems(reportTableList);
+            return;
+        }
+
+
+        reportTableList.addAll(dtoList);
+        ReportTable.setItems(reportTableList);
+        ReportTable.refresh();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        new Alert(Alert.AlertType.ERROR, "Something went wrong ").show();
+    }
+}
+        
+        
+        
+        
+    
 
     @FXML
     private void tableResetBtnOnAction(ActionEvent event) {
+        
+        ReportTable.getItems().clear();
+
+         ReportTable.setItems(reportTableList);
     }
 
     @FXML
@@ -300,50 +351,67 @@ private final SubjectBO subjectBO = (SubjectBO) BOFactory.getInstance().getBO(BO
     }
     
     
-//    private void loadAllStudentsID(){
-//        try{
-//         List <StudentDTO> allstudents = studentBO.getAllStudent();
-//         ObservableList<String> studentIDList = FXCollections.observableArrayList();
-//         
-//         for (StudentDTO dto : allstudents){
-//         
-//             studentIDList.add(dto.getId());
-//         
-//         }
-//         
-//         studentViaStudentID.setItems(studentIDList);
-//         dateViaStudentID.setItems(studentIDList);
-//         
-//        } catch(Exception e){
-//        e.printStackTrace();
-//        }
-//    
-//    }
-//    
-//    
-//    
+
+    @FXML
+    private void stuViseResetBtnOnAction(ActionEvent event) {
+        
+        studentViaCourseID.getSelectionModel().clearSelection();
+        studentViaCourseID.getSelectionModel().clearSelection();
+        
+    }
+
+    @FXML
+    private void subViseResetBtnOnAction(ActionEvent event) {
+        subjectViaCourseID.getSelectionModel().clearSelection();
+        subjectViaSubjectID.getSelectionModel().clearSelection();
+        
+        
+    }
+
+    @FXML
+    private void dateViseResetBtnOnAction(ActionEvent event) {
+        dateViaCourseID.getSelectionModel().clearSelection();
+        dateViaStudentID.getSelectionModel().clearSelection();
+        fromDate.setValue(null);
+        toDate.setValue(null);
+        
+    }
+
+    @FXML
+    private void dateViaCourseIDOnAction(ActionEvent event) {
+        
+        
+            String selectedCourseID = (String) dateViaCourseID.getValue();
     
-    
-//    private void loadAllSubjectID(){
-//        try{
-//         List <SubjectDTO> allsubjects = subjectBO.getAllSubject();
-//         ObservableList<String> subjectIDList = FXCollections.observableArrayList();
-//         
-//         for (SubjectDTO dto : allsubjects){
-//         
-//             subjectIDList.add(dto.getId());
-//         
-//         }
-//         
-//         subjectViaSubjectID.setItems(subjectIDList);
-//        
-//         
-//        } catch(Exception e){
-//        e.printStackTrace();
-//        }
-//    
-//    }
-//    
+    if (selectedCourseID != null) {
+        try {
+        
+            dateViaStudentID.getItems().clear();
+            
+       
+            List<StudentDTO> stuListDto = studentBO.getStudentByCourseID(selectedCourseID);
+            
+            if (stuListDto == null || stuListDto.isEmpty()) {
+                new Alert(Alert.AlertType.INFORMATION, "No recodes found ").show();
+                return;
+            }
+            
+        
+            ObservableList<String> stuList = FXCollections.observableArrayList();
+            for (StudentDTO dto : stuListDto) {
+                stuList.add(dto.getId()); 
+            }
+            
+         
+           dateViaStudentID.setItems(stuList);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Something went wrong ").show();
+        }
+    }
+        
+    }
 
   
   
