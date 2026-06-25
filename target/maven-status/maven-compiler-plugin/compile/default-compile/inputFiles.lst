@@ -20,6 +20,7 @@ E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\bo\custom\impl\Sub
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\controller\SubjectPanelController.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\controller\ReportsPanelController.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\bo\custom\impl\LecturerBOImpl.java
+E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\controller\RegisterPanelController.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dao\custom\Course_SubjectDAO.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dao\SuperDAO.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dao\custom\CourseDAO.java
@@ -40,6 +41,7 @@ E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dao\custom\Student
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\db\DBConnection.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\controller\ClassSchedulePanelController.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dao\custom\LecturerSubjectDAO.java
+E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\controller\LoggingPanelController.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\controller\StudentPanelController.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\bo\custom\impl\CourseBOImpl.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\bo\custom\impl\StudentBOImpl.java
@@ -55,6 +57,7 @@ E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\module-info.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dao\custom\impl\Course_SubjectDAOImpl.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dto\StudentDTO.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\entity\Course_SubjectEntity.java
+E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\controller\UserSession.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dao\custom\impl\CourseDAOImpl.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\dao\custom\ReportsDAO.java
 E:\PROJECTS\Aura_SAMS\AuraSAMS\src\main\java\lk\ijse\aurasams\bo\custom\ReportsBO.java

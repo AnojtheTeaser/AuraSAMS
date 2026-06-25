@@ -127,21 +127,6 @@
                         <Insets left="20.0" />
                      </HBox.margin>
                   </Button>
-                  <TextField fx:id="courseIDTextFields" prefHeight="14.0" prefWidth="43.0">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <TextField fx:id="subIDTextFields" prefHeight="12.0" prefWidth="29.0">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </TextField>
-                  <TextField fx:id="lecIDTextFields" prefHeight="25.0" prefWidth="24.0">
-                     <HBox.margin>
-                        <Insets top="10.0" />
-                     </HBox.margin>
-                  </TextField>
                </children>
             </HBox>
             <TableView fx:id="shedTable" prefHeight="304.0" prefWidth="769.0" VBox.vgrow="ALWAYS">

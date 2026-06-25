@@ -4,6 +4,7 @@ module lk.ijse.aurasams {
     requires java.base;
     requires java.sql;
     
+    requires itextpdf;
     
     opens lk.ijse.aurasams to javafx.fxml;
     exports lk.ijse.aurasams;

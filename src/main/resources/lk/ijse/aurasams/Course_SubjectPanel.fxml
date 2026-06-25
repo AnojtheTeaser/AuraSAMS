@@ -50,15 +50,15 @@
       </HBox>
       <HBox layoutX="23.0" layoutY="202.0" prefHeight="345.0" prefWidth="459.0" style="-fx-background-color: #dfe6e9;">
          <children>
-            <TableView fx:id="subTable" prefHeight="345.0" prefWidth="422.0">
+            <TableView fx:id="subTable" prefHeight="345.0" prefWidth="453.0">
               <columns>
                 <TableColumn fx:id="subIDCol" prefWidth="195.99996376037598" text="Sub ID" />
-                <TableColumn fx:id="subNameCol" minWidth="7.33331298828125" prefWidth="189.33338928222656" text="Sub Name" />
+                <TableColumn fx:id="subNameCol" minWidth="7.33331298828125" prefWidth="251.99996948242188" text="Sub Name" />
               </columns>
             </TableView>
          </children>
       </HBox>
-      <HBox layoutX="23.0" layoutY="103.0" prefHeight="44.0" prefWidth="543.0" spacing="15.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="23.0" layoutY="103.0" prefHeight="44.0" prefWidth="507.0" spacing="15.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Button mnemonicParsing="false" onAction="#saveBtnOnAction" prefHeight="36.0" prefWidth="120.0" text="Save" />
             <Button mnemonicParsing="false" onAction="#deleteBtnOnAction" prefHeight="36.0" prefWidth="120.0" text="Delete" />
@@ -69,7 +69,7 @@
             <Insets top="3.0" />
          </padding>
       </HBox>
-      <HBox layoutX="22.0" layoutY="151.0" prefHeight="44.0" prefWidth="469.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="22.0" layoutY="151.0" prefHeight="44.0" prefWidth="393.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Label text="Search Course ID">
                <HBox.margin>

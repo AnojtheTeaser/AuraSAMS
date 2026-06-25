@@ -32,9 +32,10 @@ public class StudentBOImpl implements StudentBO {
 
     @Override
     public boolean updateStudent(StudentDTO dto) throws Exception {
+       StudentEntity stuenti = new  StudentEntity(dto.getId(), dto.getName(), dto.getEmail(),dto.getTel(), dto.getCourseid());
+        boolean result = studentDao.update(stuenti);
+        return result;
         
-      
-        return false;
     }
 
     @Override

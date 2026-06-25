@@ -39,12 +39,6 @@ private final CourseBO courseBO = (CourseBO) BOFactory.getInstance().getBO(BOFac
     @FXML
     private TextField schedIDTextField;
     @FXML
-    private TextField courseIDTextFields;
-    @FXML
-    private TextField subIDTextFields;
-    @FXML
-    private TextField lecIDTextFields;
-    @FXML
     private TextField dateTextField;
     @FXML
     private TextField timeTextField;
@@ -87,6 +81,31 @@ private final CourseBO courseBO = (CourseBO) BOFactory.getInstance().getBO(BOFac
         tableMouseClick();
         loadcourseComboBox();
         
+        
+        try{
+            
+               String role = UserSession.getUserRole();
+            
+            if ("LECTURER".equals(role)) {
+                
+    
+                if (schedIDTextField!= null) schedIDTextField.setDisable(true);
+                if (courseIDComboBox != null) courseIDComboBox.setDisable(true);
+                if (subIDComboBox != null) subIDComboBox.setDisable(true);
+                if (dateTextField != null) dateTextField.setDisable(true);
+                 if (lecIDComboBox != null) lecIDComboBox.setDisable(true);
+                  if (timeTextField != null) timeTextField.setDisable(true);
+                
+ 
+                if (schedSaveBtn != null) schedSaveBtn.setDisable(true);
+                if (schedUpdateBtn != null) schedUpdateBtn.setDisable(true);
+                if (schedDeleteBtn!= null) schedDeleteBtn.setDisable(true);
+            }
+            
+        
+        }catch (Exception e){
+        e.printStackTrace();
+        }
         
         
         

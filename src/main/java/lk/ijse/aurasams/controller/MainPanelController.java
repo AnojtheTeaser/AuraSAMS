@@ -41,11 +41,63 @@ public class MainPanelController implements Initializable{
     private Button attendanceM;
     @FXML
     private Button reportM;
+    @FXML
+    private Button createaccountBtn;
+    @FXML
+    private Button courseSubjectM;
+    @FXML
+    private Button logoutBtn;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
-        //nothing
+          try {
+          
+            String role = UserSession.getUserRole();
+
+  
+            if ("LECTURER".equals(role)) {
+                
+                courseM.setVisible(false);
+                subjectM.setVisible(false);
+                studentM.setVisible(false);
+                lecturerM.setVisible(false);
+                
+      
+                if(courseSubjectM != null) {
+                    courseSubjectM.setVisible(false);
+                }
+                
+           
+                createaccountBtn.setVisible(false); 
+
+        
+                attendanceM.setVisible(true);
+                reportM.setVisible(true);
+                classschedM.setVisible(true);
+
+            } else if ("ADMIN".equals(role)) {
+    
+                courseM.setVisible(true);
+                subjectM.setVisible(true);
+                studentM.setVisible(true);
+                lecturerM.setVisible(true);
+                classschedM.setVisible(true);
+                attendanceM.setVisible(true);
+                reportM.setVisible(true);
+                createaccountBtn.setVisible(true);
+                
+                if(courseSubjectM != null) {
+                    courseSubjectM.setVisible(true);
+                }
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Error initializing access control!").show();
+        }
+        
+       
     }
 
     @FXML
@@ -121,6 +173,39 @@ public class MainPanelController implements Initializable{
         setPanel("/lk/ijse/aurasams/Course_SubjectPanel.fxml");
         
         
+    }
+
+    @FXML
+    private void createaccountBtnOnAction(ActionEvent event) {
+        
+        System.out.println("CreateAccount");
+        setPanel("/lk/ijse/aurasams/RegisterPanel.fxml");
+        
+    }
+
+    @FXML
+    private void logoutBtnOnAction(ActionEvent event) {
+        
+        System.out.println("Log out");
+    
+    try {
+
+        UserSession.clearSession(); 
+
+
+        Parent loginView = FXMLLoader.load(getClass().getResource("/lk/ijse/aurasams/LoggingPanel.fxml"));
+
+        javafx.stage.Stage stage = (javafx.stage.Stage) contentArea.getScene().getWindow();
+
+        stage.setScene(new javafx.scene.Scene(loginView));
+        stage.setTitle("Attendance Management System - Login");
+        stage.centerOnScreen(); 
+        stage.show();
+
+    } catch (Exception e) {
+        e.printStackTrace();
+        new Alert(Alert.AlertType.ERROR, "An error occurred during logout!").show();
+    }
     }
 
 

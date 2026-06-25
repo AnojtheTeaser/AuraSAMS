@@ -17,10 +17,15 @@ public class App extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        scene = new Scene(loadFXML("MainPanel"), 800, 600);
+        
+        try{
+        scene = new Scene(loadFXML("LoggingPanel"), 800, 600);
         stage.setScene(scene);
         stage.setTitle("Attendance Management Sysytem ");
         stage.show();
+        }catch(Exception e){
+        e.printStackTrace();
+        }
     }
 
     static void setRoot(String fxml) throws IOException {

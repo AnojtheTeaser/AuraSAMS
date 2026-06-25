@@ -20,7 +20,7 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <HBox layoutX="8.0" layoutY="42.0" prefHeight="35.0" prefWidth="483.0" spacing="2.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="8.0" layoutY="39.0" prefHeight="35.0" prefWidth="483.0" spacing="2.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Label text="Course ID">
                <font>
@@ -64,7 +64,7 @@
       </HBox>
       <HBox alignment="CENTER_LEFT" layoutX="8.0" layoutY="213.0" prefHeight="318.0" prefWidth="483.0" style="-fx-background-color: #dfe6e9;">
          <children>
-            <TableView fx:id="attendanceTable" prefHeight="283.0" prefWidth="467.0">
+            <TableView fx:id="attendanceTable" prefHeight="318.0" prefWidth="476.0">
               <columns>
                 <TableColumn fx:id="schedidCol" prefWidth="139.33330821990967" text="Sched ID" />
                 <TableColumn fx:id="stuidCol" prefWidth="138.6666717529297" text="Stu ID" />
@@ -88,7 +88,7 @@
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <HBox layoutX="8.0" layoutY="81.0" prefHeight="35.0" prefWidth="483.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="8.0" layoutY="78.0" prefHeight="35.0" prefWidth="483.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Label text="Stu ID">
                <font>
@@ -124,7 +124,7 @@
             <Insets bottom="5.0" top="5.0" />
          </padding>
       </HBox>
-      <HBox layoutX="8.0" layoutY="116.0" prefHeight="33.0" prefWidth="483.0" spacing="280.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="8.0" layoutY="113.0" prefHeight="33.0" prefWidth="483.0" spacing="280.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Button mnemonicParsing="false" onAction="#clrearTextfieldOnAction" prefHeight="31.0" prefWidth="98.0" text="Clear" />
             <Button mnemonicParsing="false" onAction="#loadTableOnAction" prefHeight="29.0" prefWidth="88.0" text="LOAD TABLE">

@@ -19,7 +19,7 @@
             <Font name="System Bold Italic" size="19.0" />
          </font>
       </Label>
-      <HBox layoutX="8.0" layoutY="43.0" prefHeight="46.0" prefWidth="849.0" spacing="2.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="8.0" layoutY="43.0" prefHeight="46.0" prefWidth="835.0" spacing="2.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Label text="Lec ID">
                <font>
@@ -88,14 +88,14 @@
       </HBox>
       <VBox layoutX="682.0" layoutY="155.0" prefHeight="347.0" prefWidth="163.0" style="-fx-background-color: #dfe6e9;">
          <children>
-            <TableView fx:id="lectureSubtable" prefHeight="254.0" prefWidth="91.0">
+            <TableView fx:id="lectureSubtable" prefHeight="339.0" prefWidth="163.0">
               <columns>
                 <TableColumn fx:id="lectureSubCol" prefWidth="160.66663110256195" text="Subjects" />
               </columns>
             </TableView>
          </children>
       </VBox>
-      <HBox layoutX="6.0" layoutY="96.0" prefHeight="46.0" prefWidth="753.0" spacing="20.0" style="-fx-background-color: #dfe6e9;">
+      <HBox layoutX="6.0" layoutY="96.0" prefHeight="46.0" prefWidth="538.0" spacing="20.0" style="-fx-background-color: #dfe6e9;">
          <children>
             <Button fx:id="lecAddBtn" mnemonicParsing="false" onAction="#lectureAddtoTableBtn" prefHeight="33.0" prefWidth="153.0" text="Add to Table">
                <HBox.margin>
