@@ -10,6 +10,7 @@ import lk.ijse.aurasams.dao.custom.impl.CourseDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.Course_SubjectDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.LecturerDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.LecturerSubjectDAOImpl;
+import lk.ijse.aurasams.dao.custom.impl.ReportsDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.StudentDAOImpl;
 import lk.ijse.aurasams.dao.custom.impl.SubjectDAOImpl;
 
@@ -55,7 +56,7 @@ public SuperDAO getDAO(DAOTypes type){
         case DAOTypes.ATTENDANCE:
             return new AttendanceDAOImpl();
         case DAOTypes.REPORTS:
-              
+              return new ReportsDAOImpl();
         
         default:
             return null;

@@ -98,7 +98,32 @@ public class SubjectDAOImpl implements SubjectDAO {
         
         return allsubentity;
     }
+
+    @Override
+    public List<SubjectEntity> getSubjectByCourseID(String courseId) throws Exception {
+        
+     Connection conn = DBConnection.getInstance().getconnection();
     
+
+    String sql = "SELECT s.sub_id, s.sub_name FROM subjects s " +
+                 "JOIN course_subjects cs ON s.sub_id = cs.sub_id " +
+                 "WHERE cs.course_id = ?";
+                 
+    PreparedStatement pstm = conn.prepareStatement(sql);
+    pstm.setString(1, courseId);
     
+    ResultSet result = pstm.executeQuery();
+    List<SubjectEntity> list = new ArrayList<>();
     
+    while (result.next()) {
+       
+           String id = result.getString("sub_id");
+           String name = result.getString("sub_name");
+           
+           SubjectEntity entity = new SubjectEntity(id, name);
+           list.add(entity);
+        
+    }
+    return list;
+    }
 }

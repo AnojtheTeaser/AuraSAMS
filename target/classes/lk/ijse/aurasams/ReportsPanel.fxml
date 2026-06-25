@@ -12,8 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: #00cec9;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="650.0" prefWidth="700.0" style="-fx-background-color: #00cec9;" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.aurasams.controller.ReportsPanelController">
    <children>
       <Label layoutX="24.0" layoutY="14.0" text="Reports">
          <font>
@@ -30,7 +29,7 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="studentViaCourseID" onAction="#studentViaCourseIDOnAction" prefWidth="150.0">
                <padding>
                   <Insets left="5.0" />
                </padding>
@@ -40,12 +39,12 @@
                   <Insets right="10.0" />
                </padding>
             </Label>
-            <ComboBox prefWidth="150.0">
+            <ComboBox fx:id="studentViaStudentID" prefWidth="150.0">
                <HBox.margin>
                   <Insets right="40.0" />
                </HBox.margin>
             </ComboBox>
-            <Button mnemonicParsing="false" text="Genarate" />
+            <Button fx:id="stuViseReportGenarateBtn" mnemonicParsing="false" onAction="#stuViseReportGenarateBtnONAction" text="Genarate" />
          </children>
          <padding>
             <Insets top="2.0" />
@@ -71,14 +70,14 @@
                   <Insets left="10.0" />
                </HBox.margin>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="subjectViaCourseID" onAction="#subjectViaCourseIDOnAction" prefWidth="150.0" />
             <Label text="Sub ID">
                <padding>
                   <Insets right="10.0" />
                </padding>
             </Label>
-            <ComboBox prefWidth="150.0" />
-            <Button mnemonicParsing="false" text="Genarate">
+            <ComboBox fx:id="subjectViaSubjectID" prefWidth="150.0" />
+            <Button fx:id="subViseReportGenarateBtn" mnemonicParsing="false" onAction="#subViseReportGenarateBtnOnAction" text="Genarate">
                <HBox.margin>
                   <Insets left="40.0" />
                </HBox.margin>
@@ -103,13 +102,13 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="dateViaCourseID" prefWidth="150.0" />
             <Label text="stu ID">
                <padding>
                   <Insets right="10.0" />
                </padding>
             </Label>
-            <ComboBox prefWidth="150.0" />
+            <ComboBox fx:id="dateViaStudentID" prefWidth="150.0" />
          </children>
          <padding>
             <Insets top="2.0" />
@@ -122,10 +121,10 @@
                   <Insets left="5.0" />
                </HBox.margin>
             </Label>
-            <DatePicker />
+            <DatePicker fx:id="fromDate" />
             <Label text="To Date" />
-            <DatePicker prefHeight="25.0" prefWidth="173.0" />
-            <Button mnemonicParsing="false" text="Genarate" />
+            <DatePicker fx:id="toDate" prefHeight="25.0" prefWidth="173.0" />
+            <Button fx:id="dateViseReportGenarateBtn" mnemonicParsing="false" onAction="#dateViseReportGenarateBtnOnAction" text="Genarate" />
          </children>
          <padding>
             <Insets bottom="5.0" top="5.0" />
@@ -133,22 +132,22 @@
       </HBox>
       <VBox layoutX="23.0" layoutY="283.0" prefHeight="339.0" prefWidth="665.0" style="-fx-background-color: #dfe6e9;">
          <children>
-            <TableView prefHeight="327.0" prefWidth="665.0">
+            <TableView fx:id="ReportTable" prefHeight="327.0" prefWidth="665.0">
               <columns>
-                <TableColumn prefWidth="76.00000190734863" text="Stu ID" />
-                <TableColumn prefWidth="167.9999771118164" text="Stu Name" />
-                  <TableColumn minWidth="1.3333740234375" prefWidth="99.33331298828125" text="Course Name" />
-                  <TableColumn minWidth="0.0" prefWidth="106.6666259765625" text="Subject " />
-                  <TableColumn prefWidth="88.66659545898438" text="Date" />
-                  <TableColumn prefWidth="113.3333740234375" text="Attendance Status" />
+                <TableColumn fx:id="stuIDCol" prefWidth="76.00000190734863" text="Stu ID" />
+                <TableColumn fx:id="stuNameCol" prefWidth="167.9999771118164" text="Stu Name" />
+                  <TableColumn fx:id="courseNameCol" minWidth="1.3333740234375" prefWidth="99.33331298828125" text="Course Name" />
+                  <TableColumn fx:id="SubjectCol" minWidth="0.0" prefWidth="106.6666259765625" text="Subject " />
+                  <TableColumn fx:id="dateCol" prefWidth="88.66659545898438" text="Date" />
+                  <TableColumn fx:id="statusCol" prefWidth="113.3333740234375" text="Attendance Status" />
               </columns>
             </TableView>
          </children>
       </VBox>
       <HBox layoutX="25.0" layoutY="239.0" prefHeight="44.0" prefWidth="327.0" spacing="50.0" style="-fx-background-color: #00cec9;">
          <children>
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="125.0" text="Table Reset" />
-            <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="127.0" text="Print" />
+            <Button fx:id="tableResetBtn" mnemonicParsing="false" onAction="#tableResetBtnOnAction" prefHeight="36.0" prefWidth="125.0" text="Table Reset" />
+            <Button fx:id="print" mnemonicParsing="false" onAction="#printOnAction" prefHeight="36.0" prefWidth="127.0" text="Print" />
          </children>
       </HBox>
    </children>

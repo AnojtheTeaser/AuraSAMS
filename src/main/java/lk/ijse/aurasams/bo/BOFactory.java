@@ -9,6 +9,7 @@ import lk.ijse.aurasams.bo.custom.impl.ClassScheduleBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.CourseBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.Course_SubjectBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.LecturerBOImpl;
+import lk.ijse.aurasams.bo.custom.impl.ReportsBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.StudentBOImpl;
 import lk.ijse.aurasams.bo.custom.impl.SubjectBOImpl;
 
@@ -19,6 +20,10 @@ import lk.ijse.aurasams.bo.custom.impl.SubjectBOImpl;
 public class BOFactory {
     
     private static BOFactory boFactory;
+
+    public static Object getBOFactory() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
 
     private BOFactory() {
     }
@@ -55,6 +60,7 @@ public class BOFactory {
         case BOTypes.ATTENDANCE:
             return new AttendanceBOImpl();
         case BOTypes.REPORTS:
+            return new ReportsBOImpl();
             
         default:
             return null;

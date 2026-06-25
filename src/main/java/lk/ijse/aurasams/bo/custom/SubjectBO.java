@@ -6,6 +6,7 @@ package lk.ijse.aurasams.bo.custom;
 
 import java.util.List;
 import lk.ijse.aurasams.bo.SuperBO;
+import lk.ijse.aurasams.dto.StudentDTO;
 import lk.ijse.aurasams.dto.SubjectDTO;
 
 /**
@@ -20,6 +21,8 @@ public interface SubjectBO extends SuperBO {
             
             SubjectDTO searchSubject(String id) throws Exception;
             public List<SubjectDTO> getAllSubject() throws Exception;
+            
+             public List<SubjectDTO> getSubjectByCourseID(String courseId) throws Exception;
     
     
 }

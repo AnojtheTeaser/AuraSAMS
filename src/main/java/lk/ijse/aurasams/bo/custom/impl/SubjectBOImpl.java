@@ -75,5 +75,26 @@ public class SubjectBOImpl implements SubjectBO {
         
 
     }
+
+    @Override
+    public List<SubjectDTO> getSubjectByCourseID(String courseId) throws Exception {
+        
+            List<SubjectEntity> entityList = subjectDao.getSubjectByCourseID(courseId);
+            List<SubjectDTO> dtoList = new ArrayList<>();
+    
+    for (SubjectEntity entity : entityList) {
+       
+           String id = entity.getId(); 
+            String name =entity.getName();
+            
+            SubjectDTO dto =new SubjectDTO(id, name);
+            dtoList.add(dto);
+        
+    }
+    return dtoList;
+        
+        
+        
+    }
     
 }
